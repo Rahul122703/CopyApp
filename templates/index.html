@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CopyApp</title>
+    <link
+      rel="icon"
+      href="./static/assets/title_icon.png"
+      type="image/icon type"
+    />
+    <style>
+      @font-face {
+        font-family: "MyCustomFont";
+        src: url("./static/font/Mang_Kenapa.ttf") format("truetype");
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      * {
+        font-family: "MyCustomFont";
+        box-sizing: border-box;
+      }
+
+      body {
+        overflow-x: hidden;
+      }
+
+      .container {
+        width: 99.5vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
+        /* border: 2px solid black; */
+      }
+      .top {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        border-radius: 4px;
+        margin-bottom: 20px;
+        font-size: 1.2em; /* Increase text size */
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 0 auto;
+        width: 99%;
+      }
+
+      .bottom {
+        /* margin: 0 auto; */
+        /* border: 2px solid black; */
+        display: flex;
+        width: 98vw;
+      }
+      .inputcss {
+        /* border: 2px solid black; */
+        width: 50%;
+        height: 85vh;
+      }
+
+      textarea {
+        min-width: 100%;
+        min-height: 85vh;
+        max-width: 99vw;
+        max-height: 85vh;
+        font-size: 1rem;
+      }
+
+      textarea:focus {
+        background: rgb(209, 233, 241);
+        border: 2px solid black;
+        font-size: 1.5rem;
+      }
+      .input_button {
+        /* border: transparent; */
+        background-color: #007bff;
+        color: white;
+        font-size: 2rem;
+        border-radius: 10px;
+        width: 25%;
+        margin: 0 auto;
+        margin-top: 1rem;
+        box-sizing: border-box;
+        padding: 0.5rem;
+      }
+
+      .setter {
+        display: flex;
+        flex-direction: column;
+      }
+
+      @media (max-width: 1000px) {
+        .bottom {
+          flex-direction: column;
+        }
+        .inputcss {
+          /* border: 2px solid black; */
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          height: 80vh;
+        }
+        .right {
+          margin-top: 200px;
+        }
+        .input_button {
+          /* border: transparent; */
+          font-size: 2rem;
+          border-radius: 10px;
+          width: 35%;
+          margin: 0 auto;
+          margin-top: 1rem;
+          box-sizing: border-box;
+          padding: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="top">
+        Add text in the upload input and click
+        <a
+          href="https://docs.google.com/spreadsheets/d/1HO9uaaopJLMD_2XiidLPKAtl1xHwYEarkmptoyDES90/edit?gid=0#gid=0"
+          >Receive</a
+        >
+        to Receive the uploaded text in another device
+      </div>
+      <div class="bottom">
+        <div class="left inputcss setter">
+          <form
+            method="POST"
+            action="{{ url_for('upload') }}"
+            class="upload_form"
+          >
+            <textarea
+              name="uploadText"
+              id="uploadText"
+              placeholder="Enter text to upload"
+            ></textarea>
+            <input type="submit" class="input_button" value="Upload" />
+          </form>
+        </div>
+        <div class="right inputcss setter">
+          <form
+            method="POST"
+            action="{{ url_for('getText') }}"
+            class="receive_form"
+          >
+            <textarea
+              name="ReceiveText"
+              id="ReceiveText"
+              placeholder="click Recive to recive the text"
+            ></textarea>
+            <input type="submit" class="input_button" value="Receive" />
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      let uploaded_text = "{{uploaded_text}}";
+      let receive_text = "{{recived_text}}";
+      console.log("{{recived_text}}");
+      const upload_input = document.querySelector("#uploadText");
+      const receive_input = document.querySelector("#ReceiveText");
+
+      upload_input.value = uploaded_text;
+      receive_input.value = receive_text;
+    </script>
+  </body>
+</html>
