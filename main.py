@@ -15,7 +15,7 @@ sheety_headers = {
 app = Flask(__name__)
 
 @app.route('/')
-def index():
+def index(): 
     return render_template('index.html')
 
 @app.route('/upload', methods = ['POST','GET'])
