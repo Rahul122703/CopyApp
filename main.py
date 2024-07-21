@@ -3,13 +3,13 @@ from flask import Flask,render_template,request
 import requests
 import datetime as dt
 
-sheety_endpoint = "https://api.sheety.co/addba4b3b88a9dd19e6b21123a15b566/onlineText/sheet1"
+sheety_endpoint = "https://api.sheety.co/03f45a2492e8c24d4b1b90a319112262/copyapp/sheet1"
 today_day = dt.datetime.now()
   
 sheety_headers = {
-    'Authorization': 'Basic cmFodWwxMjI3MDM6MjdkZWNlbWJlcjIwMDM=',
+    'Authorization': 'Basic cmFodWwxMjI3MDM6cmFodWwxMjI3MDM=',
     'username': 'rahul122703',
-    'password': '27december2003'
+    'password': 'rahul122703'
 }
 
 app = Flask(__name__)

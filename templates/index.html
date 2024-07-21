@@ -76,7 +76,6 @@
       textarea:focus {
         background: rgb(209, 233, 241);
         border: 2px solid black;
-        font-size: 1.5rem;
       }
       .input_button {
         /* border: transparent; */
@@ -135,7 +134,7 @@
       <div class="top">
         Add text in the upload input and click
         <a
-          href="https://docs.google.com/spreadsheets/d/1HO9uaaopJLMD_2XiidLPKAtl1xHwYEarkmptoyDES90/edit?gid=0#gid=0"
+          href="https://docs.google.com/spreadsheets/d/1Ig_a3mP4CvlMuTvxAOqsb-Q4XjCbHzlNiNFiyWEHSp4/edit?gid=0#gid=0"
           target="_blank"
           >Receive</a
         >
@@ -152,7 +151,11 @@
               name="uploadText"
               id="uploadText"
               placeholder="Enter text to upload"
-            ></textarea>
+            >
+            {% if recived_text %}
+            {{recived_text}}
+            {% endif %}
+          </textarea>
             <input type="submit" class="input_button" value="Upload" />
           </form>
         </div>
@@ -166,7 +169,14 @@
               name="ReceiveText"
               id="ReceiveText"
               placeholder="click Recive to recive the text"
-            ></textarea>
+            >
+            {% if recived_text %}
+            {{recived_text}}
+            {% else :%}
+              UPLOADED TEXT WILL BE RECIVED HERE
+            {% endif %}
+          </textarea
+            >
             <input type="submit" class="input_button" value="Receive" />
           </form>
         </div>
